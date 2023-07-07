@@ -3,3 +3,7 @@
 'foo'
 "bar"
 `baz`
+${invalid}
+${invalid`baz`}
+`baz`${invalid`baz`}
+`baz`${invalid`baz`${}}
