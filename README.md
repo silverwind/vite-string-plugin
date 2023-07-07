@@ -12,7 +12,7 @@ import {stringPlugin} from "vite-string-plugin";
 export default defineConfig(() => {
   return {
     plugins: [
-      stringPlugin({match: /\.svg|md/i}),
+      stringPlugin({match: /\.(svg|md)/i}),
     ],
   };
 });
@@ -20,4 +20,4 @@ export default defineConfig(() => {
 
 ## Options
 
-- `match` *RegExp*: File path to match. Default: `/\.svg|md/i`.
+- `match` *RegExp*: Regex to match File path against. Default: `/\.(svg|md)/i`.
