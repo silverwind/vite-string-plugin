@@ -4,5 +4,5 @@ import {stringPlugin} from "./index.js";
 
 export default defineConfig({
   test: backendTest,
-  plugins: [stringPlugin()],
+  plugins: [stringPlugin({match: /\.(svg|md|txt)/i})],
 });
