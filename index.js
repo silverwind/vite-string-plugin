@@ -7,11 +7,27 @@ export function stringPlugin({match = /\.(svg|md)/i} = {}) {
     async load(id) {
       const path = id.split("?")[0];
       if (!match.test(path)) return null;
-      const str = (await readFile(path, "utf8"))
-        .replaceAll("`", "\\`")
-        .replaceAll("${", "\\${");
 
-      return `export default \`${str}\`;`;
+      // based on https://github.com/joliss/js-string-escape
+      const str = (await readFile(path, "utf8"))
+        .replace(/["'\\\n\r\u2028\u2029]/g, char => {
+          switch (char) {
+            case '"':
+            case "'":
+            case "\\":
+              return `\\${char}`;
+            case "\n":
+              return "\\n";
+            case "\r":
+              return "\\r";
+            case "\u2028":
+              return "\\u2028";
+            case "\u2029":
+              return "\\u2029";
+          }
+        });
+
+      return `export default "${str}";`;
     }
   };
 }
