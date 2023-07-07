@@ -1,1 +1,5 @@
 # Test
+
+'foo'
+"bar"
+`baz`

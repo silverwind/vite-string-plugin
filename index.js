@@ -7,7 +7,7 @@ export function stringPlugin({match = /\.(svg|md)/i} = {}) {
     async load(id) {
       const path = id.split("?")[0];
       if (!match.test(path)) return null;
-      return `export default \`${await readFile(path, "utf8")}\``;
+      return `export default \`${(await readFile(path, "utf8")).replaceAll("`", "\\`")}\`;`;
     }
   };
 }
