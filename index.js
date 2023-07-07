@@ -7,26 +7,13 @@ export function stringPlugin({match = /\.(svg|md)/i} = {}) {
     async load(id) {
       const path = id.split("?")[0];
       if (!match.test(path)) return null;
+      const data = await readFile(path, "utf8");
 
-      // based on https://github.com/joliss/js-string-escape
-      const str = (await readFile(path, "utf8"))
-        .replace(/["\\\n\r\u2028\u2029]/g, char => {
-          switch (char) {
-            case '"':
-            case "\\":
-              return `\\${char}`;
-            case "\n":
-              return "\\n";
-            case "\r":
-              return "\\r";
-            case "\u2028":
-              return "\\u2028";
-            case "\u2029":
-              return "\\u2029";
-          }
-        });
-
-      return `export default "${str}";`;
+      // https://github.com/rollup/plugins/blob/master/packages/pluginutils/src/dataToEsm.ts
+      const str = (JSON.stringify(data) || "undefined").replace(/[\u2028\u2029]/g,
+        char => `\\u${`000${char.charCodeAt(0).toString(16)}`.slice(-4)}`
+      );
+      return `export default ${str};`;
     }
   };
 }
