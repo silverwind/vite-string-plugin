@@ -10,7 +10,7 @@ export function stringPlugin({match = /\.(svg|md)/i} = {}) {
       const data = await readFile(path, "utf8");
 
       // https://github.com/rollup/plugins/blob/master/packages/pluginutils/src/dataToEsm.ts
-      const str = (JSON.stringify(data)).replace(/[\u2028\u2029]/g,
+      const str = JSON.stringify(data).replace(/[\u2028\u2029]/g,
         char => `\\u${`000${char.charCodeAt(0).toString(16)}`.slice(-4)}`
       );
       return `export default ${str};`;
