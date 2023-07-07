@@ -10,10 +10,9 @@ export function stringPlugin({match = /\.(svg|md)/i} = {}) {
 
       // based on https://github.com/joliss/js-string-escape
       const str = (await readFile(path, "utf8"))
-        .replace(/["'\\\n\r\u2028\u2029]/g, char => {
+        .replace(/["\\\n\r\u2028\u2029]/g, char => {
           switch (char) {
             case '"':
-            case "'":
             case "\\":
               return `\\${char}`;
             case "\n":
