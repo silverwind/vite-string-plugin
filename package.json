@@ -1,0 +1,25 @@
+{
+  "name": "vite-string-plugin",
+  "version": "0.0.0",
+  "description": "Vite plugin to load files as string",
+  "author": "silverwind <me@silverwind.io>",
+  "repository": "silverwind/vite-string-plugin",
+  "license": "BSD-2-Clause",
+  "exports": "./index.js",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "./index.js"
+  ],
+  "devDependencies": {
+    "eslint": "8.43.0",
+    "eslint-config-silverwind": "73.0.4",
+    "updates": "14.2.9",
+    "versions": "11.0.1",
+    "vitest": "0.32.2",
+    "vitest-config-silverwind": "2.0.0"
+  }
+}
