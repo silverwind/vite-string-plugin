@@ -1,4 +1,4 @@
-import {defineConfig} from "vitest/dist/config.js";
+import {defineConfig} from "vitest/config";
 import {backendTest} from "vitest-config-silverwind";
 import {stringPlugin} from "./index.js";
 
