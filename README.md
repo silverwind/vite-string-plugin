@@ -18,4 +18,4 @@ export default defineConfig(() => ({
 
 ## Options
 
-- `match` *RegExp*: Regex to match path against. Default: `/\.(svg|md)/i`.
+- `match`: Regex to match the path against. Default: `/\.(svg|md)$/i`.
