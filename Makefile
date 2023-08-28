@@ -14,8 +14,12 @@ lint-fix: node_modules
 	npx eslint --color . --fix
 
 .PHONY: test
-test: lint node_modules
+test: node_modules
 	npx vitest
+
+.PHONY: test-update
+test-update: node_modules
+	npx vitest -u
 
 .PHONY: publish
 publish: node_modules
