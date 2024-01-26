@@ -8,9 +8,6 @@
   "exports": "./index.js",
   "type": "module",
   "sideEffects": false,
-  "engines": {
-    "node": ">=20"
-  },
   "files": [
     "./index.js"
   ],
