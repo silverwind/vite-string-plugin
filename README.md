@@ -5,7 +5,8 @@ Vite plugin to load files as string, with zero dependencies
 
 ## Usage
 
-### vite
+#### vitest.config.js
+
 ```js
 import {defineConfig} from "vite";
 import {stringPlugin} from "vite-string-plugin";
@@ -16,19 +17,12 @@ export default defineConfig({
   ],
 });
 ```
-
-### vitest
+#### file.js
 
 ```js
-import {defineConfig} from "vitest/config";
-import {stringPlugin} from "vite-string-plugin";
-
-export default defineConfig({
-  plugins: [
-    stringPlugin(),
-  ]
-});
+import foo from "./foo.svg";
 ```
+
 
 ## Options
 
