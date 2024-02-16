@@ -5,11 +5,11 @@
   "author": "silverwind <me@silverwind.io>",
   "repository": "silverwind/vite-string-plugin",
   "license": "BSD-2-Clause",
-  "exports": "./index.js",
+  "exports": "index.js",
   "type": "module",
   "sideEffects": false,
   "files": [
-    "./index.js"
+    "index.js"
   ],
   "devDependencies": {
     "eslint": "8.56.0",
