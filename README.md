@@ -26,4 +26,4 @@ import foo from "./foo.svg";
 
 ## Options
 
-- `match`: Regex to match the path against. Default: `/\.(svg|md)$/i`.
+- `match`: Regex to match the path against. Default: `/\.(svg|md|xml)$/i`.

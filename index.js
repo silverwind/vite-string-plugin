@@ -1,6 +1,6 @@
 import {readFile} from "node:fs/promises";
 
-export const stringPlugin = ({match = /\.(svg|md)$/i} = {}) => ({
+export const stringPlugin = ({match = /\.(svg|md|xml)$/i} = {}) => ({
   name: "vite-string-plugin",
   enforce: "pre",
   async load(id) {
