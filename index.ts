@@ -1,6 +1,14 @@
 import {readFile} from "node:fs/promises";
+import type {Plugin} from "vite";
 
-export const stringPlugin = ({match = /\.(svg|md|xml)$/i} = {}) => ({
+const defaultMatch = /\.(svg|md|xml)$/i;
+
+type Opts = {
+  /** regex to match on the file path. Default: /\.(svg|md|xml)$/i */
+  match: RegExp;
+}
+
+export const stringPlugin = ({match = defaultMatch}: Opts = {match: defaultMatch}): Plugin => ({
   name: "vite-string-plugin",
   enforce: "pre",
   async load(id) {
