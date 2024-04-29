@@ -12,7 +12,7 @@ export default defineConfig({
     target: "modules",
     emptyOutDir: true,
     chunkSizeWarningLimit: Infinity,
-    assetsInlineLimit: 32768,
+    assetsInlineLimit: 0,
     reportCompressedSize: false,
     lib: {
       entry: [fileURLToPath(new URL("index.ts", import.meta.url))],
