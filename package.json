@@ -13,17 +13,17 @@
     "dist"
   ],
   "devDependencies": {
-    "@types/node": "20.12.7",
+    "@types/node": "20.12.8",
     "eslint": "8.57.0",
-    "eslint-config-silverwind": "83.0.4",
-    "eslint-config-silverwind-typescript": "3.2.2",
+    "eslint-config-silverwind": "84.0.0",
+    "eslint-config-silverwind-typescript": "3.2.3",
     "typescript": "5.4.5",
     "typescript-config-silverwind": "3.0.4",
     "updates": "16.0.1",
     "versions": "12.0.1",
-    "vite": "5.2.10",
+    "vite": "5.2.11",
     "vite-plugin-dts": "3.9.0",
-    "vitest": "1.5.2",
-    "vitest-config-silverwind": "8.0.5"
+    "vitest": "1.5.3",
+    "vitest-config-silverwind": "9.0.4"
   }
 }

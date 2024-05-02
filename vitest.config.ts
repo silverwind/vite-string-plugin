@@ -1,5 +1,4 @@
 import {defineConfig} from "vitest/config";
-// @ts-ignore
 import {backend} from "vitest-config-silverwind";
 import {stringPlugin} from "./index.ts";
 
