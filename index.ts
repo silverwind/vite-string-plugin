@@ -2,7 +2,7 @@ import {readFile} from "node:fs/promises";
 import type {Plugin} from "vite";
 
 type ViteStringPluginOpts = {
-  /** regex to match on the file path. Default: /\.(svg|md|xml)$/i */
+  /** regex to match on the file path. Default: `/\.(svg|md|xml)$/i` */
   match?: RegExp;
 }
 
