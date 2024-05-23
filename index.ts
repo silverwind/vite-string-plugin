@@ -6,8 +6,10 @@ type ViteStringPluginOpts = {
   match?: RegExp;
 }
 
-/** Plugin that enables loding files as string, based on the `match` regex option */
-export const stringPlugin = ({match = /\.(svg|md|xml)$/i}: ViteStringPluginOpts = {}): Plugin => ({
+/** Plugin that enables the import any file as string */
+type StringPlugin = (opts: ViteStringPluginOpts) => Plugin;
+
+export const stringPlugin: StringPlugin = ({match = /\.(svg|md|xml)$/i}: ViteStringPluginOpts = {}): Plugin => ({
   name: "vite-string-plugin",
   enforce: "pre",
   async load(id) {
