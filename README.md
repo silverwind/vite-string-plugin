@@ -23,7 +23,25 @@ export default defineConfig({
 import foo from "./foo.svg";
 ```
 
-
 ## Options
 
 - `match`: Regex to match the path against. Default: `/\.(svg|md|xml)$/i`.
+
+#### Typescript
+
+Add these to your project-specific type declarations:
+
+```ts
+declare module "*.pdf" {
+  const value: string;
+  export default value;
+}
+declare module "*.svg" {
+  const value: string;
+  export default value;
+}
+declare module "*.md" {
+  const value: string;
+  export default value;
+}
+```
