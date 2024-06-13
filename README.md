@@ -27,7 +27,7 @@ import foo from "./foo.svg";
 
 - `match`: Regex to match the path against. Default: `/\.(svg|md|xml)$/i`.
 
-#### Typescript
+## Typescript
 
 Add these to your project-specific type declarations:
 
