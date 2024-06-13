@@ -5,7 +5,7 @@ Vite plugin to import files as string, with zero dependencies
 
 ## Usage
 
-#### vitest.config.js
+#### vite.config.js
 
 ```js
 import {defineConfig} from "vite";
