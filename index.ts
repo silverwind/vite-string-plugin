@@ -7,7 +7,7 @@ type ViteStringPluginOpts = {
 }
 
 /** Vite plugin to import files as string */
-type StringPlugin = (opts: ViteStringPluginOpts) => Plugin;
+type StringPlugin = (opts?: ViteStringPluginOpts) => Plugin;
 
 export const stringPlugin: StringPlugin = ({match = /\.(svg|md|xml)$/i}: ViteStringPluginOpts = {}): Plugin => ({
   name: "vite-string-plugin",
