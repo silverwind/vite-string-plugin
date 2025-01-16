@@ -29,7 +29,7 @@ import foo from "./foo.svg";
 
 ## Typescript
 
-Add these to your project-specific type declarations:
+Add these to your ambient type declarations:
 
 ```ts
 declare module "*.svg" {
