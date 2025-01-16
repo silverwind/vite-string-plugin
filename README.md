@@ -45,3 +45,7 @@ declare module "*.xml" {
   export default value;
 }
 ```
+
+## Related
+
+- [`vite-yaml-plugin`](https://github.com/silverwind/vite-yaml-plugin)
