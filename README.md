@@ -25,7 +25,7 @@ import foo from "./foo.svg";
 
 ## Options
 
-- `match`: Regex to match the path against. Default: `/\.(svg|md|xml)$/i`.
+- `match`: Regex to match the path against. Default: `/\.(svg|md|xml|txt)$/i`.
 
 ## Typescript
 
@@ -43,6 +43,22 @@ declare module "*.md" {
 declare module "*.xml" {
   const value: string;
   export default value;
+}
+declare module "*.txt" {
+  const value: string;
+  export default value;
+}
+```
+
+Alternatively, add this to `tsconfig.json` (only covers the default extensions):
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "vite-yaml-plugin/types"
+    ]
+  }
 }
 ```
 

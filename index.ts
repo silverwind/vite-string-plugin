@@ -2,14 +2,14 @@ import {readFile} from "node:fs/promises";
 import type {Plugin} from "vite";
 
 type ViteStringPluginOpts = {
-  /** regex to match on the file path. Default: `/\.(svg|md|xml)$/i` */
+  /** regex to match on the file path. Default: `/\.(svg|md|xml|txt)$/i` */
   match?: RegExp;
 }
 
 /** Vite plugin to import files as string */
 type StringPlugin = (opts?: ViteStringPluginOpts) => Plugin;
 
-export const stringPlugin: StringPlugin = ({match = /\.(svg|md|xml)$/i}: ViteStringPluginOpts = {}): Plugin => ({
+export const stringPlugin: StringPlugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginOpts = {}): Plugin => ({
   name: "vite-string-plugin",
   enforce: "pre",
   async load(id) {
