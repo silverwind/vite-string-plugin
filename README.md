@@ -29,7 +29,19 @@ import foo from "./foo.svg";
 
 ## Typescript
 
-Add these to your ambient type declarations:
+If the default types cover your needs, add `vite-string-plugin/types` to your `types` in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "vite-string-plugin/types"
+    ]
+  }
+}
+```
+
+Alternatively, you can add ambient type declarations for each file extension:
 
 ```ts
 declare module "*.svg" {
@@ -47,18 +59,6 @@ declare module "*.xml" {
 declare module "*.txt" {
   const value: string;
   export default value;
-}
-```
-
-Alternatively, add this to `tsconfig.json` (only covers the default extensions):
-
-```json
-{
-  "compilerOptions": {
-    "types": [
-      "vite-yaml-plugin/types"
-    ]
-  }
 }
 ```
 
