@@ -29,7 +29,7 @@ import foo from "./foo.svg";
 
 ## Typescript
 
-If the default types cover your needs, add `vite-string-plugin/types` to your `types` in `tsconfig.json`:
+If the default file extensions cover your needs, add `vite-string-plugin/types` to your `types` in `tsconfig.json`:
 
 ```json
 {
