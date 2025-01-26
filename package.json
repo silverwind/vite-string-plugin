@@ -21,7 +21,6 @@
     "@types/node": "22.10.7",
     "eslint": "8.57.0",
     "eslint-config-silverwind": "97.0.0",
-    "eslint-config-silverwind-typescript": "9.2.2",
     "typescript": "5.7.3",
     "typescript-config-silverwind": "6.2.1",
     "updates": "16.4.1",
