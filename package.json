@@ -1,6 +1,6 @@
 {
   "name": "vite-string-plugin",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Vite plugin to import files as string",
   "author": "silverwind <me@silverwind.io>",
   "repository": "silverwind/vite-string-plugin",
