@@ -4,7 +4,7 @@ import type {Plugin} from "vite";
 export type ViteStringPluginOpts = {
   /** regex to match on the file path. Default: `/\.(svg|md|xml|txt)$/i` */
   match?: RegExp;
-}
+};
 
 /** Vite plugin to import files as string */
 export const stringPlugin: (opts?: ViteStringPluginOpts) => Plugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginOpts = {}): Plugin => ({
