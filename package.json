@@ -17,18 +17,21 @@
     "dist",
     "types.d.ts"
   ],
+  "peerDependencies": {
+    "vite": "*"
+  },
   "devDependencies": {
-    "@types/node": "24.10.1",
-    "eslint": "9.39.1",
-    "eslint-config-silverwind": "111.0.8",
-    "tsdown": "0.16.5",
-    "tsdown-config-silverwind": "1.5.2",
+    "@types/node": "25.0.10",
+    "eslint": "9.39.2",
+    "eslint-config-silverwind": "118.0.0",
+    "tsdown": "0.20.1",
+    "tsdown-config-silverwind": "1.7.3",
     "typescript": "5.9.3",
-    "typescript-config-silverwind": "13.0.2",
-    "updates": "16.9.1",
-    "versions": "14.0.2",
-    "vite-config-silverwind": "6.0.5",
-    "vitest": "4.0.10",
-    "vitest-config-silverwind": "10.4.2"
+    "typescript-config-silverwind": "14.0.0",
+    "updates": "17.0.8",
+    "versions": "14.0.3",
+    "vite-config-silverwind": "6.0.9",
+    "vitest": "4.0.18",
+    "vitest-config-silverwind": "10.6.1"
   }
 }
