@@ -10,18 +10,16 @@ export type ViteStringPluginOpts = {
 export const stringPlugin: (opts?: ViteStringPluginOpts) => Plugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginOpts = {}): Plugin => ({
   name: "vite-string-plugin",
   enforce: "pre",
-  load: {
-    filter: {
-      id: match,
-    },
-    async handler(id) {
-      const path = id.split("?")[0];
-      return {
-        code: `export default ${JSON.stringify(await readFile(path, "utf8")).replace(
-          /[\u2028\u2029]/g, c => `\\u${`000${c.charCodeAt(0).toString(16)}`.slice(-4)}`
-        )};`,
-        map: {mappings: ""},
-      };
+  async transform(_code, id) {
+    const path = id.split("?")[0];
+    if (!match.test(path)) {
+      return;
     }
+    return {
+      code: `export default ${JSON.stringify(await readFile(path, "utf8")).replace(
+        /[\u2028\u2029]/g, c => `\\u${`000${c.charCodeAt(0).toString(16)}`.slice(-4)}`
+      )};`,
+      map: {mappings: ""},
+    };
   }
 });
