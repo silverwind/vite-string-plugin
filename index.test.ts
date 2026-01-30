@@ -65,8 +65,8 @@ test("hmr simulation", async () => {
       server.moduleGraph.invalidateModule(moduleNode);
     }
 
-    // Reload the module
-    const mod2 = await server.ssrLoadModule(testFile);
+    // Use a query param to force a fresh load (bypass cache)
+    const mod2 = await server.ssrLoadModule(`${testFile}?t=${Date.now()}`);
     expect(mod2.default).toEqual(updatedContent);
   } finally {
     await server.close();
