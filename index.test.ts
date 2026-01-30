@@ -1,4 +1,7 @@
-import {readFileSync} from "node:fs";
+import {readFileSync, writeFileSync, mkdtempSync} from "node:fs";
+import {join} from "node:path";
+import {tmpdir} from "node:os";
+import {createServer} from "vite";
 import {stringPlugin} from "./index.ts";
 import svg from "./fixtures/test.svg";
 import md from "./fixtures/test.md";
@@ -31,4 +34,47 @@ test("pdf", async () => {
   const expected = readFileSync(new URL("fixtures/test.pdf", import.meta.url), "utf8");
   expect(pdf).toEqual(expected);
   expect((await import("./fixtures/test.pdf")).default).toEqual(expected);
+});
+
+test("hmr simulation", async () => {
+  // Create a temporary test file
+  const tmpDir = mkdtempSync(join(tmpdir(), "vite-string-plugin-"));
+  const testFile = join(tmpDir, "hmr-test.txt");
+  const initialContent = "Initial content";
+  writeFileSync(testFile, initialContent);
+
+  // Create a Vite dev server with the plugin
+  const server = await createServer({
+    root: tmpDir,
+    logLevel: "silent",
+    plugins: [stringPlugin()],
+    server: {
+      hmr: false, // Disable HMR websocket
+    },
+  });
+
+  try {
+    // Load the module
+    const mod1 = await server.ssrLoadModule(testFile);
+    expect(mod1.default).toEqual(initialContent);
+
+    // Modify the file
+    const updatedContent = "Updated content";
+    writeFileSync(testFile, updatedContent);
+
+    // Get the module node and invalidate it
+    const moduleNode = server.moduleGraph.getModuleById(testFile);
+    if (moduleNode) {
+      // Invalidate the module and all its importers
+      server.moduleGraph.invalidateModule(moduleNode, new Set(), Date.now(), true);
+    }
+
+    // Force Vite to re-evaluate by restarting the module
+    await server.restart();
+    // Reload the module after restart
+    const mod2 = await server.ssrLoadModule(testFile);
+    expect(mod2.default).toEqual(updatedContent);
+  } finally {
+    await server.close();
+  }
 });
