@@ -48,6 +48,9 @@ test("hmr simulation", async () => {
     root: tmpDir,
     logLevel: "silent",
     plugins: [stringPlugin()],
+    server: {
+      hmr: false, // Disable HMR websocket
+    },
   });
 
   try {
@@ -59,14 +62,17 @@ test("hmr simulation", async () => {
     const updatedContent = "Updated content";
     writeFileSync(testFile, updatedContent);
 
-    // Invalidate the module to simulate HMR
+    // Get the module node and invalidate it
     const moduleNode = server.moduleGraph.getModuleById(testFile);
     if (moduleNode) {
-      server.moduleGraph.invalidateModule(moduleNode);
+      // Invalidate the module and all its importers
+      server.moduleGraph.invalidateModule(moduleNode, new Set(), Date.now(), true);
     }
 
-    // Use a query param to force a fresh load (bypass cache)
-    const mod2 = await server.ssrLoadModule(`${testFile}?t=${Date.now()}`);
+    // Force Vite to re-evaluate by restarting the module
+    await server.restart();
+    // Reload the module after restart
+    const mod2 = await server.ssrLoadModule(testFile);
     expect(mod2.default).toEqual(updatedContent);
   } finally {
     await server.close();
