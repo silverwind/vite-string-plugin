@@ -1,5 +1,6 @@
-import {readFileSync, writeFileSync, mkdirSync} from "node:fs";
+import {readFileSync, writeFileSync, mkdtempSync} from "node:fs";
 import {join} from "node:path";
+import {tmpdir} from "node:os";
 import {createServer} from "vite";
 import {stringPlugin} from "./index.ts";
 import svg from "./fixtures/test.svg";
@@ -37,8 +38,7 @@ test("pdf", async () => {
 
 test("hmr simulation", async () => {
   // Create a temporary test file
-  const tmpDir = "/tmp/vite-string-plugin-test";
-  mkdirSync(tmpDir, {recursive: true});
+  const tmpDir = mkdtempSync(join(tmpdir(), "vite-string-plugin-"));
   const testFile = join(tmpDir, "hmr-test.txt");
   const initialContent = "Initial content";
   writeFileSync(testFile, initialContent);
