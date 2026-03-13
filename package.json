@@ -21,21 +21,21 @@
     "vite": "*"
   },
   "devDependencies": {
-    "@types/node": "25.3.5",
-    "@typescript/native-preview": "7.0.0-dev.20260306.1",
-    "eslint": "9.39.3",
-    "eslint-config-silverwind": "122.0.6",
+    "@types/node": "25.5.0",
+    "@typescript/native-preview": "7.0.0-dev.20260312.1",
+    "eslint": "9.39.4",
+    "eslint-config-silverwind": "124.0.7",
     "jest-extended": "7.0.0",
-    "tsdown": "0.21.0",
-    "tsdown-config-silverwind": "2.0.0",
+    "tsdown": "0.21.2",
+    "tsdown-config-silverwind": "2.0.1",
     "typescript": "5.9.3",
-    "typescript-config-silverwind": "15.0.0",
-    "updates": "17.8.2",
+    "typescript-config-silverwind": "16.0.0",
+    "updates": "17.9.1",
     "updates-config-silverwind": "1.0.3",
     "versions": "14.2.1",
     "vite-config-silverwind": "6.0.11",
-    "vitest": "4.0.18",
-    "vitest-config-silverwind": "10.6.3"
+    "vitest": "4.1.0",
+    "vitest-config-silverwind": "10.6.4"
   },
-  "packageManager": "pnpm@10.30.3"
+  "packageManager": "pnpm@10.32.1"
 }
