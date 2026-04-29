@@ -7,7 +7,7 @@ export type ViteStringPluginOpts = {
 };
 
 /** Vite plugin to import files as string */
-export const stringPlugin: (opts?: ViteStringPluginOpts) => Plugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginOpts = {}): Plugin => ({
+export const stringPlugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginOpts = {}): Plugin => ({
   name: "vite-string-plugin",
   enforce: "pre",
   load: {
@@ -16,9 +16,9 @@ export const stringPlugin: (opts?: ViteStringPluginOpts) => Plugin = ({match = /
     },
     handler: async (id) => ({
       code: `export default ${JSON.stringify(await readFile(id.split("?")[0], "utf8")).replace(
-        /[\u2028\u2029]/g, c => `\\u${`000${c.charCodeAt(0).toString(16)}`.slice(-4)}`
+        /[\u2028\u2029]/g, c => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`
       )};`,
       map: {mappings: ""},
-    })
-  }
+    }),
+  },
 });
