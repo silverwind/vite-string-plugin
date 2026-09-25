@@ -3,7 +3,10 @@
   "version": "2.0.5",
   "description": "Vite plugin to import files as string",
   "author": "silverwind <me@silverwind.io>",
-  "repository": "silverwind/vite-string-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silverwind/vite-string-plugin.git"
+  },
   "license": "BSD-2-Clause",
   "keywords": [
     "vite",
