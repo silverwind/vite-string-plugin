@@ -34,7 +34,7 @@ import foo from "./foo.svg";
 
 ## Typescript
 
-If the default file extensions cover your needs, add `vite-string-plugin/types` to your `types` in `tsconfig.json`:
+`vite-string-plugin/types` declares modules for the `svg`, `md`, `txt` and `pdf` extensions. If those cover your needs, add it to your `types` in `tsconfig.json`:
 
 ```json
 {
