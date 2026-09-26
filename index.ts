@@ -16,7 +16,7 @@ export const stringPlugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginO
     },
     handler: async (id) => ({
       code: `export default ${JSON.stringify(await readFile(id.split("?")[0], "utf8")).replace(
-        /[\u2028\u2029]/g, c => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`
+        /[\u2028\u2029]/g, c => `\\u${c.charCodeAt(0).toString(16)}`
       )};`,
       map: {mappings: ""},
     }),

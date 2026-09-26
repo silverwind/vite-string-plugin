@@ -9,26 +9,13 @@ test("exists", () => {
   expect(stringPlugin).toBeFunction();
 });
 
-test("svg", async () => {
-  const expected = readFileSync(new URL("fixtures/test.svg", import.meta.url), "utf8");
-  expect(svg).toEqual(expected);
-  expect((await import("./fixtures/test.svg")).default).toEqual(expected);
-});
-
-test("md", async () => {
-  const expected = readFileSync(new URL("fixtures/test.md", import.meta.url), "utf8");
-  expect(md).toEqual(expected);
-  expect((await import("./fixtures/test.md")).default).toEqual(expected);
-});
-
-test("txt", async () => {
-  const expected = readFileSync(new URL("fixtures/test.txt", import.meta.url), "utf8");
-  expect(txt).toEqual(expected);
-  expect((await import("./fixtures/test.txt")).default).toEqual(expected);
-});
-
-test("pdf", async () => {
-  const expected = readFileSync(new URL("fixtures/test.pdf", import.meta.url), "utf8");
-  expect(pdf).toEqual(expected);
-  expect((await import("./fixtures/test.pdf")).default).toEqual(expected);
+test.each([
+  ["svg", svg, () => import("./fixtures/test.svg")],
+  ["md", md, () => import("./fixtures/test.md")],
+  ["txt", txt, () => import("./fixtures/test.txt")],
+  ["pdf", pdf, () => import("./fixtures/test.pdf")],
+])("%s", async (ext, value, importFixture) => {
+  const expected = readFileSync(new URL(`fixtures/test.${ext}`, import.meta.url), "utf8");
+  expect(value).toEqual(expected);
+  expect((await importFixture()).default).toEqual(expected);
 });
