@@ -19,6 +19,7 @@ export const stringPlugin = ({match = /\.(svg|md|xml|txt)$/i}: ViteStringPluginO
         /[\u2028\u2029]/g, c => `\\u${c.charCodeAt(0).toString(16)}`
       )};`,
       map: {mappings: ""},
+      moduleType: "js",
     }),
   },
 });
