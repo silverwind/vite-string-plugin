@@ -32,7 +32,7 @@ import foo from "./foo.svg";
 
 - `match`: Regex to match the path against. Default: `/\.(svg|md|xml|txt)$/i`.
 
-## Typescript
+## TypeScript
 
 `vite-string-plugin/types` declares modules for the `svg`, `md`, `txt` and `pdf` extensions. If those cover your needs, add it to your `types` in `tsconfig.json`:
 
